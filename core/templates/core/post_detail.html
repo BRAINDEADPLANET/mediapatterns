@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+  <div class="card text-center">
+    <div class="card-header text-danger bg-secondary">
+      <h5> - {{post.author}} - {{post.date}}</h5>
+    </div>
+    <div class="card-body bg-secondary">
+      <h5 class="card-title"> {{post.title}} </h5>
+      <p class="card-text"> {{post.content}} </p>
+      <p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Посмотреть комментари
+    </a>
+      </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body bg-danger">
+      {% for comment in post.postComment.all %}
+        <div class="card bg-secondary">
+          <div class="card-header text-info">
+            <h4> - {{comment.author}}</h4>
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <h4>{{comment.content}}</h4>
+              <p>Likes:{{comment.like}} Disikes: {{comment.dislike}} Ответов:</p>
+              <p>{{comment.date}}</p>
+              <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+            </blockquote>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+    </div>
+  </div>
+{% endblock %}

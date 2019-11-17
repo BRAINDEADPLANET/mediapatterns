@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Заголовок
+{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        {% include 'includes/post_list_card.html' %}
+    {% endfor %}
+{% endblock %}
